@@ -33,6 +33,7 @@ const AnimatedParticles = ({ count = 2000, activeTheme }: { count?: number; acti
   const secondaryColor = isDark ? '#e3387b' : '#e3387b';
   
   // Create instanced material and dummy object
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const dummy = new THREE.Object3D();
   const baseScale = Math.min(3, size.width / 1800);
   
@@ -76,7 +77,7 @@ const AnimatedParticles = ({ count = 2000, activeTheme }: { count?: number; acti
         instancedMesh.instanceColor.needsUpdate = true;
       }
     }
-  }, [count, viewport, activeTheme, baseScale, particleColor, secondaryColor]);
+  }, [count, viewport, activeTheme, baseScale, particleColor, secondaryColor, dummy]);
   
   const { particleRotation } = useSpring({
     particleRotation: 0.001,

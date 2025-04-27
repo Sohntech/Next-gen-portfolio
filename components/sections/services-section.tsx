@@ -86,7 +86,7 @@ export function ServicesSection() {
                 whileHover={{ y: -5 }}
               >
                 <div className={`p-3 rounded-lg bg-primary/10 ${service.color} w-fit mb-6`}>
-                  <Icon className="w-6 h-6" />
+                  {typeof Icon === 'function' ? <span className="w-6 h-6"><Icon /></span> : null}
                 </div>
                 
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
