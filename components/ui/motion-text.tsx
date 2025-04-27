@@ -1,11 +1,11 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, ElementType } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 type MotionTextProps = {
   text: string;
-  el?: keyof JSX.IntrinsicElements;
+  el?: ElementType;
   className?: string;
   once?: boolean;
   delay?: number;
@@ -14,13 +14,13 @@ type MotionTextProps = {
 
 export function MotionText({
   text,
-  el: Element = 'h1',
+  el = 'h1',
   className = '',
   once = true,
   delay = 0,
   speed = 0.05,
 }: MotionTextProps) {
-  const ref = useRef<HTMLHeadingElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once });
   
   const animatedText = text.split(' ').map((word, i) => {
@@ -44,9 +44,13 @@ export function MotionText({
     );
   });
   
+  const Component = el;
+  
   return (
-    <Element ref={ref} className={className}>
-      {animatedText}
-    </Element>
+    <div ref={ref}>
+      <Component className={className}>
+        {animatedText}
+      </Component>
+    </div>
   );
 }
