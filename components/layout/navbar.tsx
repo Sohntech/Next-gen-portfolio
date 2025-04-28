@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Sun, Moon, Menu, X, Code, Laptop, Layers, Phone } from 'lucide-react';
+import { Sun, Moon, Menu, X, Code, Laptop, Layers, Phone, Bookmark } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useAudio } from '@/components/audio/audio-provider';
@@ -15,6 +15,7 @@ const navLinks = [
   { href: '#about', label: 'A propos', icon: <Laptop className="w-4 h-4" /> },
   { href: '#skills', label: 'Skills', icon: <Code className="w-4 h-4" /> },
   { href: '#projects', label: 'Projets', icon: <Layers className="w-4 h-4" /> },
+  { href: '#experience', label: 'Parcours', icon: <Bookmark className="w-4 h-4" /> },
   { href: '#contact', label: 'Contact', icon: <Phone className="w-4 h-4" /> },
 ];
 
