@@ -24,7 +24,7 @@ export const projects: Project[] = [
     description: "Réseau social pour les tailleurs et vendeurs d'articles de couture.",
     tags: ['ReactJS', 'TypeScript', 'NodeJs', 'Tailwind CSS', 'postgreSQL', 'Prisma', 'express'],
     image: 'https://res.cloudinary.com/drxouwbms/image/upload/v1732391039/n42nbuhcpizq32ajjua8.png',
-    link: '#',
+    link: 'https://threadline.vercel.app',
     featured: true,
   },
   

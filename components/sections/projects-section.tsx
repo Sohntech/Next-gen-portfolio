@@ -2,18 +2,20 @@
 
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { projects } from '@/lib/data/projects';
+import { Project, projects } from '@/lib/data/projects';
 import { MotionText } from '@/components/ui/motion-text';
 import { Button } from '@/components/ui/button';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import { useAudio } from '@/components/audio/audio-provider';
+import { ProjectModal } from '@/components/ui/project-modal';
 
 export function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const { playSound } = useAudio();
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   
   // Get all unique tags
   const allTags = Array.from(new Set(projects.flatMap(project => project.tags)));
@@ -141,7 +143,11 @@ export function ProjectsSection() {
                       <Button
                         size="icon"
                         className="rounded-full bg-background/20 backdrop-blur-sm hover:bg-background/40"
-                        onClick={() => playSound('click')}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          playSound('click');
+                          window.open(project.link, '_blank');
+                        }}
                       >
                         <ExternalLink className="h-5 w-5" />
                       </Button>
@@ -150,7 +156,13 @@ export function ProjectsSection() {
                 </div>
               </div>
               
-              <div className="p-6">
+              <div 
+                className="p-6 cursor-pointer" 
+                onClick={() => {
+                  playSound('click');
+                  setSelectedProject(project);
+                }}
+              >
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                 <p className="text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
                 
@@ -174,6 +186,12 @@ export function ProjectsSection() {
             </motion.div>
           ))}
         </motion.div>
+
+        <ProjectModal 
+          project={selectedProject}
+          isOpen={!!selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       </div>
     </section>
   );

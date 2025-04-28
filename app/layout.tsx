@@ -49,7 +49,9 @@ export default function RootLayout({
               <AudioProvider>
                 <SoundInitializer />
                 <CustomCursor />
-                {children}
+                <div className="relative z-[1]">
+                  {children}
+                </div>
               </AudioProvider>
             </div>
           </LenisProvider>

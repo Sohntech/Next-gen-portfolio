@@ -30,7 +30,13 @@ export function CustomCursor() {
       setPosition({ x: e.clientX, y: e.clientY });
       
       const target = e.target as HTMLElement;
-      const isHoverable = target.closest('a, button, [role="button"]');
+      const isHoverable = target.closest('a, button, [role="button"], [data-hoverable]');
+      
+      // Check for modal overlays
+      const isModalOpen = document.querySelector('[role="dialog"]');
+      if (isModalOpen) {
+        setHidden(false);
+      }
       
       if (isHoverable !== null && !hovering) {
         setHovering(true);
@@ -74,7 +80,7 @@ export function CustomCursor() {
   return (
     <>
       <motion.div
-        className="fixed left-0 top-0 z-50 pointer-events-none mix-blend-difference md:block hidden"
+        className="fixed left-0 top-0 z-[99999] pointer-events-none mix-blend-difference md:block hidden"
         style={{
           x: position.x - 6,
           y: position.y - 6,
@@ -92,7 +98,7 @@ export function CustomCursor() {
       </motion.div>
       
       <motion.div
-        className="fixed left-0 top-0 z-50 pointer-events-none mix-blend-difference md:block hidden"
+        className="fixed left-0 top-0 z-[99999] pointer-events-none mix-blend-difference md:block hidden"
         style={{
           x: position.x - 24,
           y: position.y - 24,
