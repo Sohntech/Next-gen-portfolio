@@ -13,8 +13,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'John Doe | Fullstack Developer & UI/UX Designer',
-  description: 'Portfolio of John Doe, a Fullstack Developer and UI/UX Designer specializing in creating modern, immersive digital experiences.',
+  title: 'Ndiaga LO | Développeur Fullstack & UI/UX Designer',
+  description: 'Portfolio de Ndiaga Lo, un Développeur Fullstack et UI/UX Designer passionné par la création d\'expériences numériques uniques et engageantes.',
 };
 
 export default function RootLayout({
