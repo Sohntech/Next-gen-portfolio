@@ -29,12 +29,14 @@ export function SoundPopup() {
           exit={{ opacity: 0, scale: 0.9, y: -20 }}
           transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
           className="fixed inset-0 flex items-center justify-center z-[9999] backdrop-blur-sm bg-black/20"
+          style={{ pointerEvents: 'auto' }}
         >
           <motion.div 
             className="relative bg-card/80 backdrop-blur-md p-8 rounded-2xl shadow-2xl max-w-md w-full mx-4 border border-primary/10 overflow-hidden"
             initial={{ y: 20 }}
             animate={{ y: 0 }}
             exit={{ y: 20 }}
+            style={{ pointerEvents: 'auto' }}
           >
             {/* Progress bar */}
             <motion.div 
@@ -44,7 +46,7 @@ export function SoundPopup() {
               transition={{ duration, ease: "linear" }}
             />
 
-            {/* Existing content */}
+            {/* Content */}
             <motion.div 
               className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6"
               animate={{ scale: [1, 1.1, 1] }}
@@ -66,6 +68,10 @@ export function SoundPopup() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleClose}
+              style={{ 
+                cursor: 'pointer',
+                pointerEvents: 'auto'
+              }}
             >
               Begin Experience
             </motion.button>

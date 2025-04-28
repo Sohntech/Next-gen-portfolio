@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { services } from '@/lib/data/services';
 import { MotionText } from '@/components/ui/motion-text';
@@ -78,30 +78,13 @@ export function ServicesSection() {
             const Icon = service.icon;
             
             return (
-              <motion.div
-                key={service.id}
+              <ServiceCard 
+                key={service.id} 
+                service={service} 
+                Icon={Icon} 
+                playSound={playSound}
                 variants={itemVariants}
-                className="group bg-card rounded-xl p-6 hover:shadow-xl transition-all duration-500 glass"
-                whileHover={{ y: -5 }}
-              >
-                <div className={`p-3 rounded-lg bg-primary/10 ${service.color} w-fit mb-6`}>
-                  <div className="w-6 h-6">
-                    <Icon />
-                  </div>
-                </div>
-                
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-muted-foreground mb-4">{service.description}</p>
-                
-                <Button 
-                  variant="ghost" 
-                  className="mt-2 text-primary group"
-                  onClick={() => playSound('click')}
-                >
-                  En savoir plus
-                  <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </Button>
-              </motion.div>
+              />
             );
           })}
         </motion.div>
@@ -131,3 +114,95 @@ export function ServicesSection() {
     </section>
   );
 }
+
+// Composant de carte de service avec effet néon
+const ServiceCard = ({ service, Icon, playSound, variants }: { service: { color: string; title: string; description: string; }, Icon: React.ComponentType, playSound: (sound: string) => void, variants: any }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  // Couleurs néon mapping
+  const neonColors = {
+    "text-blue-500": "shadow-blue-500/50 from-blue-500 to-cyan-400",
+    "text-purple-500": "shadow-purple-500/50 from-purple-500 to-pink-500",
+    "text-orange-500": "shadow-orange-500/50 from-orange-500 to-amber-400",
+    "text-green-500": "shadow-green-500/50 from-green-500 to-emerald-400",
+    "text-red-500": "shadow-red-500/50 from-red-500 to-rose-400",
+    "text-yellow-500": "shadow-yellow-500/50 from-yellow-500 to-amber-300",
+    // Couleur par défaut si aucune correspondance
+    "default": "shadow-primary/50 from-primary to-violet-400"
+  };
+  
+  // Obtenir la couleur néon correspondante ou utiliser la valeur par défaut
+  const neonColor = neonColors[service.color as keyof typeof neonColors] || neonColors.default;
+  
+  return (
+    <motion.div
+      variants={variants}
+      className="relative group"
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+      whileHover={{ y: -5 }}
+    >
+      {/* Card content */}
+      <div className="bg-card rounded-xl p-6 transition-all duration-500 glass relative z-10 h-full">
+        <div className={`p-3 rounded-lg bg-primary/10 ${service.color} w-fit mb-6`}>
+          <div className="w-6 h-6">
+            <Icon />
+          </div>
+        </div>
+        
+        <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+        <p className="text-muted-foreground mb-4">{service.description}</p>
+        
+        <Button 
+          variant="ghost" 
+          className="mt-2 text-primary group"
+          onClick={() => playSound('click')}
+        >
+          En savoir plus
+          <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+        </Button>
+      </div>
+      
+      {/* Glowing border overlay */}
+      <div className="absolute inset-0 rounded-xl overflow-hidden">
+        {/* Top néon border */}
+        <motion.div 
+          className={`absolute top-0 left-0 h-[2px] bg-gradient-to-r ${neonColor} `}
+          initial={{ width: "0%" }}
+          animate={isHovered ? { width: "100%" } : { width: "0%" }}
+          transition={{ duration: isHovered ? 0.4 : 0.2, ease: "easeInOut" }}
+        />
+        
+        {/* Right néon border */}
+        <motion.div 
+          className={`absolute top-0 right-0 w-[2px] bg-gradient-to-b ${neonColor} blur-[2px]`}
+          initial={{ height: "0%" }}
+          animate={isHovered ? { height: "100%" } : { height: "0%" }}
+          transition={{ duration: isHovered ? 0.4 : 0.2, ease: "easeInOut", delay: isHovered ? 0.4 : 0 }}
+        />
+        
+        {/* Bottom néon border */}
+        <motion.div 
+          className={`absolute bottom-0 right-0 h-[2px] bg-gradient-to-l ${neonColor} blur-[2px]`}
+          initial={{ width: "0%" }}
+          animate={isHovered ? { width: "100%" } : { width: "0%" }}
+          transition={{ duration: isHovered ? 0.4 : 0.2, ease: "easeInOut", delay: isHovered ? 0.8 : 0 }}
+        />
+        
+        {/* Left néon border */}
+        <motion.div 
+          className={`absolute bottom-0 left-0 w-[2px] bg-gradient-to-t ${neonColor} blur-[2px]`}
+          initial={{ height: "0%" }}
+          animate={isHovered ? { height: "100%" } : { height: "0%" }}
+          transition={{ duration: isHovered ? 0.4 : 0.2, ease: "easeInOut", delay: isHovered ? 1.2 : 0 }}
+        />
+        
+        {/* Subtle glow effect */}
+        <motion.div
+          className={`absolute inset-0 rounded-xl opacity-0 shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)] transition-opacity duration-500`}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+        />
+      </div>
+    </motion.div>
+  );
+};
