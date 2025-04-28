@@ -62,11 +62,11 @@ export function ContactSection() {
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
           >
-            Get In Touch
+            Contactez-moi
           </motion.div>
           
           <MotionText
-            text="Let's work together on your next project"
+            text="Je suis à votre écoute concernant vos projets"
             el="h2"
             className="text-3xl md:text-5xl font-bold mb-6"
             once={true}
@@ -79,8 +79,7 @@ export function ContactSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-muted-foreground text-lg"
           >
-            Have a project in mind or want to discuss potential collaboration?
-            Feel free to reach out through any of the channels below.
+            Que vous ayez une question, un projet en tête ou simplement envie de discuter, n'hésitez pas à me contacter. Je suis là pour vous aider et échanger sur vos idées.
           </motion.p>
         </div>
         
@@ -90,7 +89,7 @@ export function ContactSection() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+            <h3 className="text-2xl font-bold mb-6">Informations</h3>
             
             <div className="space-y-6 mb-8">
               <div className="flex items-start gap-4">
@@ -104,7 +103,7 @@ export function ContactSection() {
                     className="text-muted-foreground hover:text-primary transition-colors"
                     onClick={() => playSound('click')}
                   >
-                    hello@johndoe.com
+                    ndiagalo259@gmail.com
                   </a>
                 </div>
               </div>
@@ -114,8 +113,8 @@ export function ContactSection() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="font-medium">Location</p>
-                  <p className="text-muted-foreground">Paris, France</p>
+                  <p className="font-medium">Adresse</p>
+                  <p className="text-muted-foreground">Dakar, Senegal</p>
                 </div>
               </div>
               
@@ -124,19 +123,19 @@ export function ContactSection() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="font-medium">Phone</p>
+                  <p className="font-medium">Téléphone</p>
                   <a 
                     href="tel:+33612345678" 
                     className="text-muted-foreground hover:text-primary transition-colors"
                     onClick={() => playSound('click')}
                   >
-                    +33 6 12 34 56 78
+                    +221 78 455 99 30
                   </a>
                 </div>
               </div>
             </div>
             
-            <h3 className="text-2xl font-bold mb-4">Connect with me</h3>
+            <h3 className="text-2xl font-bold mb-4">Suivez-moi</h3>
             <div className="flex gap-4">
               <Button
                 variant="outline"
@@ -154,22 +153,6 @@ export function ContactSection() {
               >
                 <Linkedin className="h-5 w-5" />
               </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
-                onClick={() => playSound('click')}
-              >
-                <Twitter className="h-5 w-5" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                className="rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
-                onClick={() => playSound('click')}
-              >
-                <Instagram className="h-5 w-5" />
-              </Button>
             </div>
           </motion.div>
           
@@ -180,9 +163,9 @@ export function ContactSection() {
           >
             <Card className="glass">
               <CardHeader>
-                <CardTitle>Send me a message</CardTitle>
+                <CardTitle>Envoyez-moi un message</CardTitle>
                 <CardDescription>
-                  Fill out the form below and I'll get back to you as soon as possible.
+                  Remplissez ce formulaire et je vous recontacterai dans les plus brefs delais.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -190,12 +173,12 @@ export function ContactSection() {
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium">
-                        Name
+                        Nom
                       </label>
                       <input
                         id="name"
                         className="w-full px-4 py-2 rounded-lg border border-input bg-background/50"
-                        placeholder="John Doe"
+                        placeholder="Votre nom"
                       />
                     </div>
                     <div className="space-y-2">
@@ -205,19 +188,19 @@ export function ContactSection() {
                       <input
                         id="email"
                         className="w-full px-4 py-2 rounded-lg border border-input bg-background/50"
-                        placeholder="john@example.com"
+                        placeholder="email@example.com"
                       />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
                     <label htmlFor="subject" className="text-sm font-medium">
-                      Subject
+                      Sujet
                     </label>
                     <input
                       id="subject"
                       className="w-full px-4 py-2 rounded-lg border border-input bg-background/50"
-                      placeholder="Project Inquiry"
+                      placeholder="Type de sujet"
                     />
                   </div>
                   
@@ -229,7 +212,7 @@ export function ContactSection() {
                       id="message"
                       rows={5}
                       className="w-full px-4 py-2 rounded-lg border border-input bg-background/50 resize-none"
-                      placeholder="Tell me about your project..."
+                      placeholder="Dites moi en plus sur votre projet..."
                     />
                   </div>
                   
@@ -240,7 +223,7 @@ export function ContactSection() {
                       playSound('click');
                     }}
                   >
-                    Send Message
+                    Envoyer
                     <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </form>

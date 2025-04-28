@@ -47,11 +47,11 @@ export function ServicesSection() {
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
           >
-            My Services
+            Mes Services
           </motion.div>
           
           <MotionText
-            text="Specialized services I offer"
+            text="Des solutions sur mesure pour vos besoins numériques"
             el="h2"
             className="text-3xl md:text-5xl font-bold mb-6"
             once={true}
@@ -64,8 +64,7 @@ export function ServicesSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-muted-foreground text-lg"
           >
-            I provide end-to-end solutions across various domains of digital product development,
-            from concept to deployment and beyond.
+           Je suis un développeur passionné par la création d&apos;expériences numériques uniques et engageantes. Voici quelques-uns des services que je propose.
           </motion.p>
         </div>
         
@@ -86,7 +85,9 @@ export function ServicesSection() {
                 whileHover={{ y: -5 }}
               >
                 <div className={`p-3 rounded-lg bg-primary/10 ${service.color} w-fit mb-6`}>
-                  {typeof Icon === 'function' ? <span className="w-6 h-6"><Icon /></span> : null}
+                  <div className="w-6 h-6">
+                    <Icon />
+                  </div>
                 </div>
                 
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
@@ -97,7 +98,7 @@ export function ServicesSection() {
                   className="mt-2 text-primary group"
                   onClick={() => playSound('click')}
                 >
-                  Learn More
+                  En savoir plus
                   <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </Button>
               </motion.div>
@@ -111,9 +112,9 @@ export function ServicesSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-16 text-center"
         >
-          <p className="text-muted-foreground mb-6">
-            Need a custom solution for your project?
-          </p>
+            <p className="text-muted-foreground mb-6">
+            Besoin d'une solution personnalisée pour votre projet ?
+            </p>
           <Button 
             size="lg"
             className="rounded-full group"
@@ -122,7 +123,7 @@ export function ServicesSection() {
               document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            Get In Touch
+            Contactez-moi
             <ArrowUpRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
           </Button>
         </motion.div>

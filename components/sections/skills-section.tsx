@@ -15,6 +15,7 @@ import {
   Layers,
   Palette,
   LineChart,
+  Flame,
   Github
 } from 'lucide-react';
 import { MotionText } from '@/components/ui/motion-text';
@@ -27,24 +28,24 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    title: 'Frontend Development',
+    title: 'Développement Frontend',
     icon: <Globe className="w-6 h-6" />,
     skills: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'HTML/CSS', 'JavaScript'],
   },
   {
-    title: 'Backend Development',
+    title: 'Développement Backend',
     icon: <Server className="w-6 h-6" />,
-    skills: ['Node.js', 'Express', 'Django', 'Flask', 'PostgreSQL', 'MongoDB', 'GraphQL', 'REST APIs'],
+    skills: ['Node.js', 'Express', 'PostgreSQL', 'MongoDB', 'REST APIs', 'NestJS', 'Firebase'],
   },
   {
-    title: 'Mobile Development',
+    title: 'Développement Mobile',
     icon: <Smartphone className="w-6 h-6" />,
-    skills: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'Mobile UI Design', 'App Store Publishing'],
+    skills: ['Flutter', 'Swift', 'Firebase', 'Mobile UI Design'],
   },
   {
     title: 'UI/UX Design',
     icon: <Paintbrush className="w-6 h-6" />,
-    skills: ['Figma', 'Adobe XD', 'UI Design', 'UX Research', 'Wireframing', 'Prototyping', 'Design Systems'],
+    skills: ['Figma', 'UI Design', 'UX Research', 'Wireframing', 'Prototyping', 'Design Systems'],
   },
 ];
 
@@ -86,11 +87,11 @@ export function SkillsSection() {
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
           >
-            My Skills
+            Mes Compétences
           </motion.div>
           
           <MotionText
-            text="Technologies & expertise that fuel my work"
+            text="Domaine d'application et technologies"
             el="h2"
             className="text-3xl md:text-5xl font-bold mb-6"
             once={true}
@@ -103,8 +104,8 @@ export function SkillsSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-muted-foreground text-lg"
           >
-            I specialize in a wide range of technologies across frontend, backend, mobile development, 
-            and UI/UX design to deliver comprehensive digital solutions.
+            Je suis un développeur passionné par la création d&apos;applications web et mobiles. 
+            J&apos;utilise les dernières technologies pour offrir des solutions performantes et esthétiques.
           </motion.p>
         </div>
         
@@ -144,7 +145,7 @@ export function SkillsSection() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-16 p-6 bg-card rounded-xl glass"
         >
-          <h3 className="text-xl font-bold mb-4">Tools & Software</h3>
+          <h3 className="text-xl font-bold mb-4">Outils & Logiciels</h3>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {[
               { name: 'VS Code', icon: <Code className="w-5 h-5" /> },
@@ -152,13 +153,13 @@ export function SkillsSection() {
               { name: 'Figma', icon: <Figma className="w-5 h-5" /> },
               { name: 'Terminal', icon: <Terminal className="w-5 h-5" /> },
               { name: 'MongoDB', icon: <Database className="w-5 h-5" /> },
-              { name: 'Adobe CC', icon: <Palette className="w-5 h-5" /> },
               { name: 'Docker', icon: <Layers className="w-5 h-5" /> },
               { name: 'Vercel', icon: <Server className="w-5 h-5" /> },
-              { name: 'Jira', icon: <Layout className="w-5 h-5" /> },
-              { name: 'Analytics', icon: <LineChart className="w-5 h-5" /> },
               { name: 'CI/CD', icon: <Terminal className="w-5 h-5" /> },
               { name: 'Postman', icon: <Server className="w-5 h-5" /> },
+              { name: 'Firebase', icon: <Flame className="w-5 h-5" /> },
+
+
             ].map((tool, i) => (
               <div key={i} className="flex items-center gap-2 p-2 rounded-lg bg-secondary/50">
                 {tool.icon}

@@ -9,9 +9,23 @@ export function CustomCursor() {
   const [clicked, setClicked] = useState(false);
   const [hidden, setHidden] = useState(true);
   const [hovering, setHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(true); // Default to mobile to prevent flashing
   const { playSound } = useAudio();
-  
+
+  // Check if device is mobile/tablet
   useEffect(() => {
+    const checkDevice = () => {
+      setIsMobile(window.matchMedia('(hover: none), (max-width: 768px)').matches);
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    return () => window.removeEventListener('resize', checkDevice);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return; // Don't add listeners on mobile devices
+
     const updatePosition = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
       
@@ -52,14 +66,15 @@ export function CustomCursor() {
       window.removeEventListener('mouseup', handleMouseUp);
       window.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [hovering, playSound]);
+  }, [hovering, playSound, isMobile]);
 
-  if (typeof window === 'undefined') return null;
+  // Don't render anything on mobile/tablet or during SSR
+  if (typeof window === 'undefined' || isMobile) return null;
 
   return (
     <>
       <motion.div
-        className="fixed left-0 top-0 z-50 pointer-events-none mix-blend-difference"
+        className="fixed left-0 top-0 z-50 pointer-events-none mix-blend-difference md:block hidden"
         style={{
           x: position.x - 6,
           y: position.y - 6,
@@ -77,7 +92,7 @@ export function CustomCursor() {
       </motion.div>
       
       <motion.div
-        className="fixed left-0 top-0 z-50 pointer-events-none mix-blend-difference"
+        className="fixed left-0 top-0 z-50 pointer-events-none mix-blend-difference md:block hidden"
         style={{
           x: position.x - 24,
           y: position.y - 24,

@@ -5,6 +5,22 @@ import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { MotionText } from '@/components/ui/motion-text';
 
+type SocialLink = {
+  name: string;
+  url: string;
+};
+
+const socialLinks: SocialLink[] = [
+  {
+    name: "Github",
+    url: "https://github.com/Sohntech"
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/ndiaga-l-4a7581139/"
+  }
+];
+
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
@@ -67,12 +83,12 @@ export function AboutSection() {
           >
             <motion.div variants={itemVariants}>
               <div className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-                About Me
+                A propos de moi
               </div>
             </motion.div>
             
             <MotionText
-              text="I create digital experiences that users love"
+              text="Je cree des expériences numériques uniques"
               el="h2"
               className="text-3xl md:text-5xl font-bold mb-6"
               once={true}
@@ -83,18 +99,19 @@ export function AboutSection() {
               variants={itemVariants}
               className="text-muted-foreground text-lg mb-6"
             >
-              I&apos;m a passionate fullstack developer and UI/UX designer with expertise in 
-              creating immersive digital experiences. My approach combines technical excellence 
-              with creative design thinking to build products that are both beautiful and functional.
+              Je suis un développeur fullstack passionné et un designer UI/UX avec une expertise 
+              dans la création d&apos;expériences numériques immersives. Mon approche combine 
+              l&apos;excellence technique avec une réflexion créative en design pour concevoir des 
+              produits à la fois beaux et fonctionnels.
             </motion.p>
             
             <motion.p
               variants={itemVariants}
               className="text-muted-foreground text-lg mb-8"
             >
-              With a background spanning web development, mobile applications, and design systems, 
-              I bridge the gap between development and design to create cohesive products that 
-              deliver exceptional user experiences.
+              Je suis toujours à la recherche de nouveaux défis et d&apos;opportunités pour 
+              apprendre et grandir. Que ce soit en travaillant sur des projets passionnants ou en 
+              collaborant avec des équipes talentueuses, je suis prêt à relever le défi.
             </motion.p>
             
             <motion.div
@@ -102,10 +119,10 @@ export function AboutSection() {
               className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8"
             >
               {[
-                { label: "Name", value: "John Doe" },
-                { label: "Email", value: "hello@johndoe.com" },
-                { label: "Role", value: "Fullstack Developer" },
-                { label: "Location", value: "Paris, France" },
+                { label: "Nom", value: "Ndiaga LO" },
+                { label: "Email", value: "ndiagalo259@gmail.com" },
+                { label: "Métier", value: "Développeur Fullstack et UI/UX Designer" },
+                { label: "Adresse", value: "Dakar, Senegal" },
               ].map((item, index) => (
                 <div key={index}>
                   <p className="text-sm text-muted-foreground">{item.label}</p>
@@ -117,13 +134,15 @@ export function AboutSection() {
             <motion.div variants={itemVariants} className="flex gap-4">
               <p className="text-sm text-muted-foreground">Follow me —</p>
               <div className="flex gap-4">
-                {["Github", "Twitter", "LinkedIn", "Dribbble"].map((social) => (
+                {socialLinks.map((social) => (
                   <a
-                    key={social}
-                    href="#"
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-sm hover:text-primary hover:underline transition-colors"
                   >
-                    {social}
+                    {social.name}
                   </a>
                 ))}
               </div>

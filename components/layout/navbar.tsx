@@ -9,20 +9,40 @@ import { useTheme } from 'next-themes';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { useAudio } from '@/components/audio/audio-provider';
 import { SoundToggle } from '@/components/ui/sound-toggle';
+import { useRouter } from 'next/router';
 
 const navLinks = [
-  { href: '#about', label: 'About', icon: <Laptop className="w-4 h-4" /> },
+  { href: '#about', label: 'A propos', icon: <Laptop className="w-4 h-4" /> },
   { href: '#skills', label: 'Skills', icon: <Code className="w-4 h-4" /> },
-  { href: '#projects', label: 'Projects', icon: <Layers className="w-4 h-4" /> },
+  { href: '#projects', label: 'Projets', icon: <Layers className="w-4 h-4" /> },
   { href: '#contact', label: 'Contact', icon: <Phone className="w-4 h-4" /> },
 ];
 
 export function Navbar() {
   const [mounted, setMounted] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const { playSound } = useAudio();
   const { scrollY } = useScroll();
-  
+
+  // Fonction pour gérer le scroll fluide
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    playSound('click');
+    setIsOpen(false); // Ferme le menu mobile après un clic
+
+    const target = document.querySelector(href);
+    if (target) {
+      const offset = 80; // Ajustez selon la hauteur de votre navbar
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   // Transform navbar background opacity based on scroll
   const bgOpacity = useTransform(scrollY, [0, 100], [0, 1]);
   const backdropBlur = useTransform(scrollY, [0, 100], [0, 8]);
@@ -38,12 +58,12 @@ export function Navbar() {
     <motion.nav 
       className="fixed top-0 left-0 w-full z-50 px-4 py-4"
       style={{
-        backgroundColor: scrollY.get() > 10 ? 'rgba(var(--card), 0.7)' : 'transparent',
+        backgroundColor: `rgba(var(--card), ${bgOpacity.get()})`,
         backdropFilter: `blur(${backdropBlur.get()}px)`,
       }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6 }}
     >
       <div className="container mx-auto flex justify-between items-center">
         <Link 
@@ -56,18 +76,52 @@ export function Navbar() {
         
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <Link
+            <a
               key={link.href}
               href={link.href}
               className="flex items-center gap-1.5 text-sm font-medium hover:text-primary transition-colors"
-              onClick={() => playSound('click')}
+              onClick={(e) => handleNavClick(e, link.href)}
             >
               {link.icon}
               {link.label}
-            </Link>
+            </a>
           ))}
         </div>
         
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild className="md:hidden">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="rounded-full"
+              onClick={() => playSound('click')}
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </Button>
+          </SheetTrigger>
+          <SheetContent 
+            side="right" 
+            className="w-[80vw] sm:w-80 bg-background/95 backdrop-blur-md"
+          >
+            <div className="flex flex-col h-full py-10">
+              <h3 className="text-xl font-bold mb-8">Navigation</h3>
+              <div className="flex flex-col space-y-6">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="flex items-center gap-2 text-lg font-medium hover:text-primary transition-colors"
+                    onClick={(e) => handleNavClick(e, link.href)}
+                  >
+                    {link.icon}
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
+
         <div className="flex items-center gap-4">
           <SoundToggle />
           
@@ -86,39 +140,6 @@ export function Navbar() {
               <Moon className="w-5 h-5" />
             )}
           </Button>
-          
-          <div className="md:hidden">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="rounded-full"
-                  onClick={() => playSound('click')}
-                >
-                  <Menu className="w-5 h-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent className="w-full sm:w-80">
-                <div className="flex flex-col h-full py-10">
-                  <h3 className="text-xl font-bold mb-8">Navigation</h3>
-                  <div className="flex flex-col space-y-6">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        className="flex items-center gap-2 text-lg font-medium hover:text-primary transition-colors"
-                        onClick={() => playSound('click')}
-                      >
-                        {link.icon}
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
         </div>
       </div>
     </motion.nav>

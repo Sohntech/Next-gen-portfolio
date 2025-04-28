@@ -57,11 +57,11 @@ export function ProjectsSection() {
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
           >
-            My Projects
+            Mes Projets
           </motion.div>
           
           <MotionText
-            text="Featured projects I've created"
+            text="Des projets qui parlent d'eux-mêmes"
             el="h2"
             className="text-3xl md:text-5xl font-bold mb-6"
             once={true}
@@ -74,8 +74,8 @@ export function ProjectsSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-muted-foreground text-lg"
           >
-            Browse through my selected works across web, mobile, and design projects.
-            Each project represents a unique challenge and solution.
+            Découvrez mes projets récents qui illustrent mon expertise et ma passion pour le développement web.
+            Chaque projet est une opportunité d&apos;apprendre et de créer des solutions innovantes.
           </motion.p>
         </div>
         

@@ -72,7 +72,7 @@ export function HeroSection() {
                 className="group"
                 onClick={handleExploreClick}
               >
-                Explore My Work
+                Découvrez 
                 <ArrowDown className="ml-2 h-4 w-4 transition-transform group-hover:translate-y-1" />
               </Button>
             
@@ -81,7 +81,10 @@ export function HeroSection() {
                   variant="outline"
                   size="icon"
                   className="rounded-full"
-                  onClick={() => playSound('click')}
+                  onClick={() => {
+                    playSound('click');
+                    window.open('https://github.com/Sohntech', '_blank');
+                  }}
                 >
                   <Github className="h-5 w-5" />
                 </Button>
@@ -89,17 +92,12 @@ export function HeroSection() {
                   variant="outline"
                   size="icon"
                   className="rounded-full"
-                  onClick={() => playSound('click')}
+                  onClick={() => {
+                    playSound('click');
+                    window.open('https://www.linkedin.com/in/ndiaga-l-4a7581139/', '_blank');
+                  }}
                 >
                   <Linkedin className="h-5 w-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="rounded-full"
-                  onClick={() => playSound('click')}
-                >
-                  <Twitter className="h-5 w-5" />
                 </Button>
               </div>
             </motion.div>

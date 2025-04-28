@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 
 export interface Service {
+  [x: string]: {};
   id: string;
   title: string;
   description: string;
@@ -24,58 +25,39 @@ export interface Service {
 export const services: Service[] = [
   {
     id: 'service-1',
-    title: 'Web Development',
-    description: 'From interactive websites to complex web applications with modern frameworks like React, Next.js, and Vue.',
+    title: 'Développement Web',
+    description: 'Création de sites web et d\'applications web sur mesure avec des technologies modernes comme React, Next.js, et Node.js.',
     icon: Globe,
     color: 'text-blue-500',
   },
   {
     id: 'service-2',
-    title: 'Mobile App Development',
-    description: 'Cross-platform and native mobile apps for iOS and Android using React Native, Flutter, and Swift.',
+    title: 'Développement Mobile',
+    description: 'Applications mobiles natives et hybrides pour iOS et Android, optimisées pour la performance et l\'expérience utilisateur.',
     icon: Smartphone,
     color: 'text-green-500',
   },
   {
     id: 'service-3',
     title: 'UI/UX Design',
-    description: 'User-centered design process from wireframes to high-fidelity prototypes with focus on usability and aesthetics.',
+    description: 'Conception d\'interfaces utilisateur intuitives et esthétiques, centrées sur l\'expérience utilisateur.',
     icon: Paintbrush,
     color: 'text-purple-500',
   },
+  
   {
     id: 'service-4',
-    title: 'Backend Development',
-    description: 'Scalable server architectures, APIs, and database solutions using Node.js, Express, MongoDB, and PostgreSQL.',
-    icon: Database,
-    color: 'text-yellow-500',
-  },
-  {
-    id: 'service-5',
-    title: 'Custom CMS Solutions',
-    description: 'Tailor-made content management systems that fit your specific workflow and content needs.',
+    title: 'CMS sur mesure',
+    description: 'Développement de systèmes de gestion de contenu personnalisés pour une gestion facile et efficace de votre contenu.',
     icon: Code,
     color: 'text-red-500',
   },
   {
-    id: 'service-6',
-    title: 'AI Integration',
-    description: 'Implementing artificial intelligence and machine learning features into your applications for enhanced functionality.',
+    id: 'service-5',
+    title: 'Prompt Engineering',
+    description: 'Optimiser les interactions avec les modèles de langage pour des résultats plus précis et pertinents.',
     icon: Bot,
     color: 'text-indigo-500',
   },
-  {
-    id: 'service-7',
-    title: 'Cloud Services',
-    description: 'Deployment, hosting, and management of applications on cloud platforms like AWS, Google Cloud, and Azure.',
-    icon: Cloud,
-    color: 'text-blue-300',
-  },
-  {
-    id: 'service-8',
-    title: 'Analytics & SEO',
-    description: 'Implementation of analytics tracking and search engine optimization for your digital products.',
-    icon: LineChart,
-    color: 'text-green-400',
-  },
+  
 ];

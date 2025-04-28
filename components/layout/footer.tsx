@@ -32,7 +32,7 @@ export function Footer() {
             className="text-3xl font-bold gradient-text mb-6 md:mb-0"
             onClick={() => playSound('click')}
           >
-            <span className="font-basement">JD.</span>
+            <span className="font-basement">SOHNTECH.</span>
           </Link>
           
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4">
@@ -60,7 +60,7 @@ export function Footer() {
         
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} John Doe. All rights reserved.
+            © {new Date().getFullYear()} Ndiaga LO - Tous droits réservés.
           </p>
           
           <div className="flex gap-6">

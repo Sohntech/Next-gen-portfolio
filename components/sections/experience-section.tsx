@@ -51,11 +51,11 @@ export function ExperienceSection() {
             transition={{ duration: 0.5 }}
             className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6"
           >
-            My Journey
+            Mon Parcours
           </motion.div>
           
           <MotionText
-            text="Professional experience & education"
+            text="Mon expérience professionnelle et académique"
             el="h2"
             className="text-3xl md:text-5xl font-bold mb-6"
             once={true}
@@ -68,8 +68,8 @@ export function ExperienceSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-muted-foreground text-lg"
           >
-            My career path across different roles in development and design,
-            along with my educational background.
+            Découvrez mon parcours professionnel et académique, 
+            mettant en avant mes expériences et mes compétences.
           </motion.p>
         </div>
         
@@ -82,14 +82,14 @@ export function ExperienceSection() {
             <TabsList className="grid w-full grid-cols-2 mb-12">
               <TabsTrigger 
                 value="experience" 
-                className="text-lg py-3"
+                className="text-lg py-3 data-[state=active]:bg-primary transition-colors"
                 onClick={() => playSound('click')}
               >
-                Work Experience
+                Experience
               </TabsTrigger>
               <TabsTrigger 
                 value="education" 
-                className="text-lg py-3"
+                className="text-lg py-3 data-[state=active]:bg-primary transition-colors"
                 onClick={() => playSound('click')}
               >
                 Education

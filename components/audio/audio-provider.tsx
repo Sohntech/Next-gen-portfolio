@@ -30,7 +30,7 @@ const sounds = {
   },
   click: {
     src: ['/sounds/click.mp3'],
-    volume: 0.2,
+    volume: 0.1,
     preload: true,
   },
   ambient: {
@@ -105,6 +105,9 @@ export function AudioProvider({ children }: { children: ReactNode }) {
     
     const sound = howls.get(name);
     if (sound) {
+      // Stop any currently playing instance of this sound
+      sound.stop();
+      // Play new instance
       sound.play();
     }
   };
