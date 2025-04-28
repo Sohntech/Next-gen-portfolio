@@ -15,6 +15,15 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: 'Ndiaga LO | Développeur Fullstack & UI/UX Designer',
   description: 'Portfolio de Ndiaga Lo, un Développeur Fullstack et UI/UX Designer passionné par la création d\'expériences numériques uniques et engageantes.',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/apple-touch-icon-precomposed.png',
+    },
+  },
 };
 
 export default function RootLayout({

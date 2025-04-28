@@ -47,8 +47,16 @@ export function HeroSection() {
         
           <div className="max-w-8xl mx-auto mt-8  mb-8">
             <MotionText
-              text="Bonjour, bienvenue sur le portfolio de Sohntech !"
-              className="mb-6 text-balance font-basement"
+              text="Bonjour, bienvenue sur le"
+              className="text-balance font-basement"
+            />
+             <MotionText
+              text="PORTFOLIO"
+              className=" text-balance bg-gradient-to-r from-purple-800 to-pink-600 bg-clip-text text-transparent font-basement"
+            />
+             <MotionText
+              text="de Sohntech !"
+              className=" text-balance font-basement"
             />
           
             <motion.p

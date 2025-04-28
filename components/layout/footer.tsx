@@ -15,11 +15,11 @@ export function Footer() {
   };
   
   const navLinks = [
-    { href: '#about', label: 'About' },
+    { href: '#about', label: 'A propos' },
     { href: '#skills', label: 'Skills' },
-    { href: '#projects', label: 'Projects' },
+    { href: '#projects', label: 'Projets' },
     { href: '#services', label: 'Services' },
-    { href: '#experience', label: 'Experience' },
+    { href: '#experience', label: 'Parcours' },
     { href: '#contact', label: 'Contact' },
   ];
   
@@ -69,14 +69,14 @@ export function Footer() {
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
               onClick={() => playSound('click')}
             >
-              Privacy Policy
+              Politique de confidentialité
             </Link>
             <Link 
               href="#" 
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
               onClick={() => playSound('click')}
             >
-              Terms of Service
+              Conditions d'utilisation
             </Link>
           </div>
         </div>
