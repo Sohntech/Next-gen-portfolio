@@ -47,7 +47,7 @@ export function HeroSection() {
         
           <div className="max-w-8xl mx-auto mt-8  mb-8">
             <MotionText
-              text="Bonjour, bienvenue sur le"
+              text="Bienvenue sur le"
               className="text-balance font-basement"
             />
              <MotionText
