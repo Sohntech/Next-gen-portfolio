@@ -24,10 +24,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.variable} font-sans antialiased relative min-h-screen`}>
+      <body className={`${spaceGrotesk.variable} font-sans antialiased relative min-h-screen overflow-x-hidden`}>
         <Providers>
           <LenisProvider>
-            <div className="relative w-full h-full">
+            <div className="relative w-full">
               <AudioProvider>
                 <SoundInitializer />
                 <CustomCursor />

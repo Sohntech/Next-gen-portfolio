@@ -12,7 +12,7 @@ import { ScrollProgress } from '@/components/ui/scroll-progress';
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative w-full overflow-x-hidden">
       <BackgroundScene />
       <ScrollProgress />
       <Navbar />
