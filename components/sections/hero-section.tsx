@@ -7,6 +7,7 @@ import { ArrowDown, Github, Linkedin, Twitter } from 'lucide-react';
 import { MotionText } from '@/components/ui/motion-text';
 import { useAudio } from '@/components/audio/audio-provider';
 import { SoundPopup } from '@/components/ui/sound-popup';
+import SparkleStarEffect from '@/components/ui/sparkle-star-effect'; // Importez le nouveau composant
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -45,7 +46,10 @@ export function HeroSection() {
          
           </motion.div>
         
-          <div className="max-w-8xl mx-auto mt-8  mb-8">
+          <div className="max-w-8xl mx-auto mt-8 mb-8 relative">
+            {/* Ajout du composant étoile ici */}
+            <SparkleStarEffect />
+            
             <MotionText
               text="Bienvenue sur le"
               className="text-balance font-basement"

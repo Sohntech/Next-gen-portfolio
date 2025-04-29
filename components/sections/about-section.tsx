@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { MotionText } from '@/components/ui/motion-text';
+import { FlipCard } from '@/components/ui/flip-card';
 
 type SocialLink = {
   name: string;
@@ -59,16 +60,11 @@ export function AboutSection() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
-            <div className="rounded-2xl overflow-hidden">
-              <Image
-                src="https://res.cloudinary.com/drxouwbms/image/upload/v1743803438/learners/bwear6xjrbj69froahdp.jpg"
-                alt="Developer portrait"
-                width={400}
-                height={400}
-                className="w-full object-cover aspect-[1/1]"
-                priority
-              />
-            </div>
+            <FlipCard
+              frontImage="https://res.cloudinary.com/drxouwbms/image/upload/v1743803438/learners/bwear6xjrbj69froahdp.jpg"
+              qrCodeImage="https://res.cloudinary.com/drxouwbms/image/upload/v1742057394/Portfolio_Ndiaga_mil4mc.png" // Replace with your QR code image path
+              alt="Developer portrait"
+            />
             
             <div className="absolute -bottom-6 -right-6 bg-card p-4 rounded-xl shadow-lg glass">
               <p className="text-4xl font-bold font-basement">2+</p>
