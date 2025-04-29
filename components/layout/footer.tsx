@@ -76,7 +76,7 @@ export function Footer() {
               className="text-sm text-muted-foreground hover:text-primary transition-colors"
               onClick={() => playSound('click')}
             >
-              Conditions d'utilisation
+              Conditions d&apos;utilisation
             </Link>
           </div>
         </div>

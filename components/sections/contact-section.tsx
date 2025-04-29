@@ -79,7 +79,7 @@ export function ContactSection() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-muted-foreground text-lg"
           >
-            Que vous ayez une question, un projet en tête ou simplement envie de discuter, n'hésitez pas à me contacter. Je suis là pour vous aider et échanger sur vos idées.
+            Que vous ayez une question, un projet en tête ou simplement envie de discuter, n&apos;hésitez pas à me contacter. Je suis là pour vous aider et échanger sur vos idées.
           </motion.p>
         </div>
         

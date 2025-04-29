@@ -96,7 +96,7 @@ export function ServicesSection() {
           className="mt-16 text-center"
         >
             <p className="text-muted-foreground mb-6">
-            Besoin d'une solution personnalisée pour votre projet ?
+            Besoin d&apos;une solution personnalisée pour votre projet ?
             </p>
           <Button 
             size="lg"
